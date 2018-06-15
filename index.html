@@ -258,6 +258,7 @@
         <ul class="toc-footer">
             <li><a style=color:lime target=_new href=https://api.pocketwatch.xyz/?where_do_you_come_from=docs>API Keys, Monthly Plans</a></li>
             <li><a href='https://github.com/lord/slate'>Super Doc Powers &#x26a1; by Slate</a></li>
+            <li><a href=https://github.com/dosyago-corp/service-issues/issues>Open an Issue</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -294,7 +295,11 @@
 <p><aside class="notice">
     You must replace <code>&lt;your API key&gt;</code> with your personal API key.
   </aside></p>
-<h1 id='timers'>Timers</h1><h2 id='create-a-new-timer'>Create a new Timer</h2><pre class="highlight javascript tab-javascript"><code>  <span class="kr">const</span> <span class="nx">pocketwatch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@dosy/pocketwatch'</span><span class="p">);</span>
+<h1 id='timers'>Timers</h1><h2 id='create-a-new-timer'>Create a new Timer</h2>
+<blockquote>
+<p>To create a timer, use this code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">const</span> <span class="nx">pocketwatch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@dosy/pocketwatch'</span><span class="p">);</span>
 
   <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">pocketwatch</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'&lt;your API key&gt;'</span><span class="p">);</span>
   <span class="kd">let</span> <span class="nx">timers</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
@@ -316,7 +321,7 @@
     <span class="p">}</span>
   <span class="p">}</span>
 </code></pre>
-<p>This endpoint creates a new timer.</p>
+<p>This endpoint creates a new timer. It will begin running immediately.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.pocketwatch.xyz/v1/timer/new</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
@@ -357,9 +362,13 @@
 </tbody></table>
 
 <p><aside class="success">
-    Remember — Include apiKey with the above request to authenticate!
+    Remember — Include <code>apiKey</code> with the above request to authenticate!
   </aside></p>
-<h2 id='delete-a-specific-timer'>Delete a Specific Timer</h2><pre class="highlight javascript tab-javascript"><code>  <span class="kr">const</span> <span class="nx">pocketwatch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@dosy/pocketwatch'</span><span class="p">);</span>
+<h2 id='delete-a-specific-timer'>Delete a Specific Timer</h2>
+<blockquote>
+<p>To delete one of your timers, use code like this:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">const</span> <span class="nx">pocketwatch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@dosy/pocketwatch'</span><span class="p">);</span>
 
   <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">pocketwatch</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'&lt;your API key&gt;'</span><span class="p">);</span>
   <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s1">'&lt;timer keyName&gt;'</span><span class="p">);</span>
@@ -377,7 +386,6 @@
 
 <p><aside class="warning">
     Once you delete a timer you cannot get it back and its execution will stop immediately. 
-    You will be recredited for the approximate amount of hits remaining on your timer, so those amount of hits will be added back to your quota for your plan.
   </aside></p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.pocketwatch.xyz/v1/delete/timer</code></p>
@@ -393,12 +401,70 @@
 <td>The keyName of the timer to delete</td>
 </tr>
 </tbody></table>
-<h1 id='api-keys'>API Keys</h1><h2 id='refresh-an-api-key'>Refresh an API Key</h2><h1 id='subscriptions'>Subscriptions</h1><h2 id='cancel-a-subscription'>Cancel a subscription</h2><h1 id='errors'>Errors</h1>
+
+<p><aside class="success">
+    Your plan&#39;s hit quota be credited for the approximate amount of hits remaining on the deleted timer.
+  </aside></p>
+<h1 id='api-keys'>API Keys</h1><h2 id='refresh-an-api-key'>Refresh an API Key</h2>
+<blockquote>
+<p>To refresh your current API key, and be issued a new API key, do this:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">const</span> <span class="nx">pocketwatch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@dosy/pocketwatch'</span><span class="p">);</span>
+
+  <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">pocketwatch</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'&lt;your API key&gt;'</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">key</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="p">{</span>
+    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"refresh"</span><span class="p">,</span>
+    <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+    <span class="s2">"oldKey"</span><span class="p">:</span> <span class="s2">"&lt;your old API key&gt;"</span><span class="p">,</span>
+    <span class="s2">"apiKey"</span><span class="p">:</span> <span class="s2">"&lt;your new API key&gt;"</span>
+  <span class="p">}</span>
+</code></pre>
+<p>This endpoint refreshes your API key. </p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.pocketwatch.xyz/v1/key/refresh</code></p>
+
+<p><aside class="notice">
+    The <code>oldKey</code> will become invalid. This nearly always happens immediately, but
+    occasionally it may not be immediate. Plan to begin using your new <code>apiKey</code> for all
+    subsequent requests.
+    Remember — Include <code>apiKey</code> with the above request to authenticate!
+  </aside></p>
+<h1 id='subscriptions'>Subscriptions</h1><h2 id='cancel-a-subscription'>Cancel a subscription</h2>
+<blockquote>
+<p>To cancel your subscription, issue this command:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">const</span> <span class="nx">pocketwatch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@dosy/pocketwatch'</span><span class="p">);</span>
+
+  <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">pocketwatch</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'&lt;your API key&gt;'</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">subscription</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="p">{</span>
+    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"cancel"</span><span class="p">,</span>
+    <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+    <span class="s2">"endsAt"</span><span class="p">:</span> <span class="s2">"&lt;timestamp at which the subscription will end&gt;"</span>
+  <span class="p">}</span>
+</code></pre>
+<p>This endpoint cancels your subscription. </p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.pocketwatch.xyz/v1/subscription/cancel</code></p>
+
+<p><aside class="warning">
+    Please note &mdash; we do not offer partial refunds if you paid for an entire billing period and then cancel part way through. Instead, the subscription will work until the end of your current billing period, at which time it will cease. 
+  </aside></p>
+<h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+  Here's a helpful guide to let you know what's up if you see any of these HTTP errors.
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>The Pocketwatch API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -408,47 +474,31 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Bad Request &mdash; Your request is invalid.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Unauthorized &mdash; Your API key is wrong.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found &mdash; The specified endpoint could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>Method Not Allowed &mdash; You tried to access an endpoint with an invalid method.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &mdash; You&#39;re sending requesting too many requests!</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error &mdash; We had a problem with our server. Please wait a little bit.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Service Unavailable -- We&#39;re feeling really embarrassed. Please tell us how we&#39;re doing on our <a href="https://github.com/dosyago-corp/service-issues/issues">issues page</a></td>
 </tr>
 </tbody></table>
 
