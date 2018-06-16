@@ -354,11 +354,19 @@
 </tr>
 <tr>
 <td>method</td>
-<td>The HTTP method your timer will use to request your URL. Must be one of GET or POST.</td>
+<td>The HTTP method your timer will use to request your URL. Must be one of GET, POST, PUT, PATCH, HEAD or DELETE. The client library will fill it as GET if omitted.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>Optional. Valid for method that&#39;s not GET or HEAD. If present, must be a string value. The request body to send.</td>
+</tr>
+<tr>
+<td>contentType</td>
+<td>Optional, defaults to &#39;application/json&#39;. The value of the &#39;Content-Type&#39; header of your request. Valid for requests with a body. If present must be a string.</td>
 </tr>
 <tr>
 <td>name</td>
-<td>A descriptive name for your timer. Is not required to be unique. Can contain spaces. Optional.</td>
+<td>Optional. A descriptive name for your timer. Is not required to be unique. Can contain spaces. If present must be a string.</td>
 </tr>
 </tbody></table>
 
