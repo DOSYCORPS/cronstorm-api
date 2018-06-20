@@ -304,11 +304,13 @@
 
   <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">pocketwatch</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'&lt;your API key&gt;'</span><span class="p">);</span>
   <span class="kd">let</span> <span class="nx">timers</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"My new timer"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://example.com/my-webhook"</span><span class="p">,</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
     <span class="na">interval</span><span class="p">:</span> <span class="s2">"second"</span><span class="p">,</span>
     <span class="na">intervalCount</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="na">duration</span><span class="p">:</span> <span class="s2">"week"</span><span class="p">,</span>
-    <span class="na">durationCount</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="na">durationCount</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"My new timer"</span><span class="p">,</span>
   <span class="p">});</span>
 </code></pre>
 <blockquote>
